@@ -13,13 +13,16 @@ let prevGuess = [];
 let numGuess = 1;
 let playGame = true;
 
+
 submit.addEventListener('click', function (e) {
   e.preventDefault();
+
   if (playGame) {
     let guess = parseInt(userInput.value);
     validateGuess(guess);
   }
 });
+
 
 function validateGuess(guess) {
   if (isNaN(guess)) {
@@ -45,19 +48,19 @@ function validateGuess(guess) {
     }
   }
 }
-
 function checkGuess(guess) {
   if (guess === randomnumber) {
     displaymessage('Congrats! You guessed it right');
     endGame();
   }
   else if (guess > randomnumber) {
-    displaymessage('Your guess is too high');
+    displaymessage(' Your guess is too high');
   }
   else {
-    displaymessage('Your guess is too low');
+    displaymessage(' Your guess is too low');
   }
 }
+
 
 function displayGuess(guess) {
   userInput.value = '';
@@ -66,9 +69,11 @@ function displayGuess(guess) {
   remaining.innerHTML = `${11 - numGuess}`;
 }
 
+
 function displaymessage(message) {
   loworHi.innerHTML = `<h2>${message}</h2>`;
 }
+
 
 function endGame() {
   userInput.value = '';
@@ -83,7 +88,7 @@ function endGame() {
 
 function newGame() {
   const startnew = document.querySelector('#newgame');
-
+  startnew.style.boxShadow='0 0 10px black';
   startnew.addEventListener('click', function () {
     randomnumber = Math.floor(Math.random() * 100) + 1;
     numGuess = 1;
